@@ -162,12 +162,41 @@ export default function Home() {
           </nav>
         </div>
       </header>
+
+      {/* Hero Section */}
       <section className="flex flex-col items-center justify-center text-center px-6 py-20">
         <img src="/buckle.png" alt="Champion Bullrider.Pro Buckle" className="w-80 md:w-[420px] drop-shadow-2xl" />
         <p className="mt-8 text-2xl md:text-3xl font-bold italic text-[#c9a84c] tracking-wide">&ldquo;Pain is Temporary, Victory Lasts Forever&rdquo;</p>
         <p className="mt-6 text-lg md:text-xl max-w-2xl text-[#8a9bb5]">The ultimate mobile platform for bull riders, stock contractors, trainers, sponsors, and fans. Track scores, connect with the community, and take your rodeo career to the next level.</p>
-        <a href="#waitlist" className="mt-10 px-8 py-4 bg-[#8b1a1a] text-white font-bold rounded-lg text-lg uppercase tracking-wider hover:bg-[#a52222] transition shadow-lg shadow-[#8b1a1a]/30">Join the Waitlist</a>
+
+        {/* App Store Buttons - Coming Soon */}
+        <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
+          <div className="relative group">
+            <div className="flex items-center gap-3 bg-[#162a4a] border border-[#2a4a7a] rounded-xl px-6 py-3 opacity-70 cursor-default">
+              <svg viewBox="0 0 384 512" className="w-8 h-8 fill-[#e8e8ec]"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+              <div className="text-left">
+                <p className="text-[10px] text-[#8a9bb5] uppercase leading-tight">Download on the</p>
+                <p className="text-lg font-semibold text-[#e8e8ec] leading-tight">App Store</p>
+              </div>
+            </div>
+            <span className="absolute -top-3 -right-3 bg-[#8b1a1a] text-white text-[10px] font-bold uppercase px-2 py-1 rounded-full shadow-lg">Coming Soon</span>
+          </div>
+          <div className="relative group">
+            <div className="flex items-center gap-3 bg-[#162a4a] border border-[#2a4a7a] rounded-xl px-6 py-3 opacity-70 cursor-default">
+              <svg viewBox="0 0 512 512" className="w-8 h-8 fill-[#e8e8ec]"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+              <div className="text-left">
+                <p className="text-[10px] text-[#8a9bb5] uppercase leading-tight">Get it on</p>
+                <p className="text-lg font-semibold text-[#e8e8ec] leading-tight">Google Play</p>
+              </div>
+            </div>
+            <span className="absolute -top-3 -right-3 bg-[#8b1a1a] text-white text-[10px] font-bold uppercase px-2 py-1 rounded-full shadow-lg">Coming Soon</span>
+          </div>
+        </div>
+
+        <a href="#waitlist" className="mt-8 px-8 py-4 bg-[#8b1a1a] text-white font-bold rounded-lg text-lg uppercase tracking-wider hover:bg-[#a52222] transition shadow-lg shadow-[#8b1a1a]/30">Join the Waitlist</a>
       </section>
+
+      {/* Features Section */}
       <section id="features" className="max-w-7xl mx-auto px-6 py-20">
         <h2 className="text-3xl font-bold text-center mb-14 text-[#c9a84c] uppercase tracking-wider">What&#39;s Inside</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -181,6 +210,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Feature Modal */}
       {openModal !== null && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={() => setOpenModal(null)}>
           <div className="bg-[#162a4a] border border-[#2a4a7a] rounded-2xl max-w-lg w-full mx-4 p-8 shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -197,6 +228,8 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      {/* Pricing Section */}
       <section id="pricing" className="max-w-5xl mx-auto px-6 py-20">
         <h2 className="text-3xl font-bold text-center mb-14 text-[#c9a84c] uppercase tracking-wider">Pricing</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -215,6 +248,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Waitlist Section */}
       <section id="waitlist" className="max-w-xl mx-auto px-6 py-20 text-center">
         <h2 className="text-3xl font-bold mb-4 text-[#c9a84c] uppercase tracking-wider">Get Early Access</h2>
         <p className="text-[#8a9bb5] mb-8">Drop your email and be the first to know when Bullrider.Pro launches.</p>
@@ -228,6 +263,8 @@ export default function Home() {
         )}
         {status === "error" && <p className="mt-4 text-red-400 text-sm">{errorMsg}</p>}
       </section>
+
+      {/* Footer */}
       <footer className="border-t border-[#2a4a7a] bg-[#0c1524]">
         <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-[#5a6a80]">
           <span>&copy; 2026 Bullrider.Pro &mdash; All rights reserved.</span>
