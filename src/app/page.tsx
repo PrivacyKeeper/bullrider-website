@@ -154,7 +154,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#0f1b2d] text-[#e8e8ec]">
       <header className="w-full border-b border-[#2a4a7a] bg-[#0c1524]/95 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-          <a href="/" className="flex items-center"><img src="/buckle.png" alt="Bullrider.Pro" className="h-14 w-auto" /></a>
+          <a href="/" className="flex items-center"><img src="/buckle.png" alt="Bullrider.Pro" className="h-[72px] w-auto" /></a>
           <nav className="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-wider text-[#8a9bb5]">
             <a href="#features" className="hover:text-[#c9a84c] transition">Features</a>
             <a href="#pricing" className="hover:text-[#c9a84c] transition">Pricing</a>
@@ -165,7 +165,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center text-center px-6 py-20">
-        <img src="/buckle.png" alt="Champion Bullrider.Pro Buckle" className="w-80 md:w-[420px] drop-shadow-2xl" />
+        <img src="/buckle.png" alt="Champion Bullrider.Pro Buckle" className="w-[416px] md:w-[546px] drop-shadow-2xl" />
         <p className="mt-8 text-2xl md:text-3xl font-bold italic text-[#c9a84c] tracking-wide">&ldquo;Pain is Temporary, Victory Lasts Forever&rdquo;</p>
         <p className="mt-6 text-lg md:text-xl max-w-2xl text-[#8a9bb5]">The ultimate mobile platform for bull riders, stock contractors, trainers, sponsors, and fans. Track scores, connect with the community, and take your rodeo career to the next level.</p>
 
