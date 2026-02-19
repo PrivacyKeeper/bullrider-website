@@ -1,442 +1,243 @@
-'use client';
-
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Footer from './components/footer';
+"use client";
+import { useState } from "react";
 
 const features = [
   {
-    id: 'social',
-    title: 'Social & Community',
-    icon: '👥',
-    description: 'Your Barrel Racing Family, Connected',
-    details: [
-      'Share stories that disappear in 24 hours',
-      'Post photos & videos of your runs',
-      'Like, comment, and bookmark posts',
-      'Follow your favorite riders',
-      'Create and manage fan pages',
-      'Group chats for your barn, team, or friends',
-      'Direct messaging with read receipts',
-      'Community challenges with leaderboards',
-      'Earn badges for achievements',
-      'Search and discover new riders',
-      'Block and report features for safety',
+    icon: "\u{1F920}",
+    title: "Social & Community",
+    desc: "Your Bull Riding Family, Connected",
+    detail: [
+      "Community feed with posts, likes, and comments",
+      "Direct messaging and group chats with real-time updates",
+      "Create and join group conversations",
+      "Rider, contractor, trainer, and fan directory",
+      "Build your profile with stats, bio, and achievements",
+      "Search and discover riders, events, and content",
+      "Push notifications so you never miss a moment",
     ],
   },
   {
-    id: 'livestream',
-    title: 'Live Streaming',
-    icon: '📺',
-    description: 'Go Live From Anywhere',
-    details: [
-      'Broadcast your runs in real-time',
-      'Host watch parties with friends',
-      'Spectator mode for major events',
-      'Live stream chat with viewers',
-      'See who\'s watching your stream',
-      'Watch party messaging',
-      'Record and save your streams',
-      'Share streams to your feed',
-      'Multi-viewer support',
-      'Real-time viewer counts',
+    icon: "\u{1F4E1}",
+    title: "Live Streaming",
+    desc: "Go Live From Anywhere",
+    detail: [
+      "Stream live from any event or arena",
+      "Watch active streams with real-time chat",
+      "Live score ticker alongside streams",
+      "Viewer count and engagement tracking",
+      "Powered by Agora for crystal-clear video",
+      "Go-live with one tap from your phone",
     ],
   },
   {
-    id: 'competition',
-    title: 'Competition & Events',
-    icon: '🏆',
-    description: 'Everything Competition, One Place',
-    details: [
-      'Browse and register for events',
-      'Live results as they happen',
-      'Draw positions and notifications',
-      'Time divisions and classes',
-      'Season standings and points',
-      'Leaderboards by association',
-      'Producer dashboard for event managers',
-      'Event payouts and prize tracking',
-      'Entry fee payments through app',
-      'Follow events for updates',
-      'Association points tracking (NBHA, WPRA, etc.)',
-      'Rodeo entries and scheduling',
+    icon: "\u{1F3C6}",
+    title: "Competition & Events",
+    desc: "Everything Competition, One Place",
+    detail: [
+      "Browse upcoming, live, and completed events",
+      "Interactive map view with Google Maps integration",
+      "Log rides with score, ride time, buck-off time, and bull",
+      "Real-time leaderboards - all time, monthly, and weekly",
+      "Live event scoring with instant updates",
+      "Add events to your calendar",
+      "Filter by date, distance, and event type",
     ],
   },
   {
-    id: 'horse',
-    title: 'Horse Management',
-    icon: '🐴',
-    description: "Your Horse\'s Complete Digital Life",
-    details: [
-      'Unlimited horse profiles with photos/videos',
-      'Full pedigree and bloodline tracking',
-      'Famous bloodlines database',
-      'Breeding reports and records',
-      'Horse resume for sales',
-      'Performance history by arena',
-      'Competition results and times',
-      'Arena-specific stats',
-      'Training logs and notes',
-      'Link horses to your runs',
-      'Share profiles to marketplace',
+    icon: "\u{1F402}",
+    title: "Bull Database",
+    desc: "Know Every Bull Before You Ride",
+    detail: [
+      "Detailed bull profiles with stats and buck patterns",
+      "Buckoff rate and ride history for every bull",
+      "Bull supplier directory and contact info",
+      "Rider-bull matchup history",
+      "Track spin rate, kick force, and difficulty rating",
+      "Browse bulls by supplier or stock contractor",
     ],
   },
   {
-    id: 'training',
-    title: 'Training & AI',
-    icon: '🎯',
-    description: 'Train Smarter, Not Harder',
-    details: [
-      'AI-powered run analysis',
-      'Video analysis tools with slow-mo',
-      'Side-by-side video comparisons',
-      'Training video library from pros',
-      'Book coaching sessions in-app',
-      'Trainer availability calendar',
-      'Training drills and exercises',
-      'Predictive analytics for improvement',
-      'Progress tracking over time',
-      'AI consultations for technique',
-      'Training insights and recommendations',
-      'Workout logs for you and your horse',
+    icon: "\u{1F3AF}",
+    title: "Training & AI",
+    desc: "Train Smarter, Not Harder",
+    detail: [
+      "AI-powered ride analysis with OpenAI integration",
+      "Session recording to review your rides",
+      "Training video library with pro techniques",
+      "Find and book coaches for one-on-one sessions",
+      "Track your coaching history and progress",
+      "AR Bull Simulator with 6 difficulty levels",
+      "Simulate rides on bulls from Gentle Giant to Bodacious 2.0",
+      "Simulation history and performance tracking",
     ],
   },
   {
-    id: 'health',
-    title: 'Equine Health & Care',
-    icon: '❤️',
-    description: 'Complete Health Management',
-    details: [
-      'Health dashboard at a glance',
-      'Vet records and visit history',
-      'Vaccination schedules and reminders',
-      'Medication schedules with alerts',
-      'Nutrition logs and feeding plans',
-      'Care scheduler with templates',
-      'Health metrics tracking',
-      'Recovery metrics after events',
-      'Vet contacts directory',
-      'Upload and store vet documents',
-      'Farrier visit tracking',
-      'Wearable data integration',
+    icon: "\u{1FA79}",
+    title: "Health & Safety",
+    desc: "Ride Hard, Stay Safe",
+    detail: [
+      "Log injuries by body part and severity",
+      "Track injury history and recovery timeline",
+      "Health reminders and medication tracking",
+      "Connect wearables - smartwatch, sensors, and vests",
+      "Live biometric data during rides",
+      "Wearable sync history and trends",
+      "Weather integration for event-day conditions",
     ],
   },
   {
-    id: 'marketplace',
-    title: 'Marketplace',
-    icon: '🛒',
-    description: 'Buy & Sell With Confidence',
-    details: [
-      'List horses, tack, trailers, services',
-      'Multiple photos per listing',
-      'Seller ratings and reviews',
-      'Save listings for later',
-      'Report suspicious listings',
-      'Review helpful votes',
-      'Direct message sellers',
-      'Search and filter listings',
-      'Price history and comparisons',
-      'Secure payment processing',
-      'Listing analytics for sellers',
+    icon: "\u{1F6D2}",
+    title: "Marketplace",
+    desc: "Buy & Sell With Confidence",
+    detail: [
+      "Browse listings for gear, bulls, services, and more",
+      "Filter by category - gear, bulls, services, other",
+      "Create listings with photos and descriptions",
+      "Seller profiles with ratings and history",
+      "Direct message sellers from any listing",
+      "Mark items as sold or remove listings anytime",
     ],
   },
   {
-    id: 'travel',
-    title: 'Travel & Safety',
-    icon: '🚗',
-    description: 'Travel Safe, Arrive Ready',
-    details: [
-      'Route planner with stops',
-      'Arena finder along your route',
-      'Real-time weather forecasts',
-      'Severe weather alerts',
-      'Emergency alert system',
-      'Emergency contacts with one-tap call',
-      'Hauler directory with reviews',
-      'Book transport trips',
-      'Trip requests for haulers',
-      'Travel plan sharing',
-      'Gas station and rest stop finder',
-      'Arena reviews from other riders',
+    icon: "\u{1F91D}",
+    title: "Sponsors & Pros",
+    desc: "Grow Your Career",
+    detail: [
+      "Browse active sponsors looking for riders",
+      "Apply for sponsorships directly in the app",
+      "Track your sponsorship requests and status",
+      "Producer dashboard for event management",
+      "Sponsor profiles with company info and budgets",
+      "Showcase your stats and audience to attract deals",
     ],
   },
   {
-    id: 'pro',
-    title: 'For Professionals',
-    icon: '💼',
-    description: 'Grow Your Business',
-    details: [
-      'Trainer profiles and services',
-      'Trainer availability calendar',
-      'Coaching session bookings',
-      'Vet contact listings',
-      'Hauler profiles with reviews',
-      'Sponsorship hub',
-      'Sponsor opportunity matching',
-      'Sponsorship contracts management',
-      'Deliverable tracking and proofs',
-      'Sponsorship analytics',
-      'Payment processing for services',
-      'Service provider directory',
+    icon: "\u2B50",
+    title: "Youth & Achievements",
+    desc: "The Next Generation of Bull Riding",
+    detail: [
+      "Youth challenges with leaderboards",
+      "Browse and join active challenges",
+      "Track your challenge entries and progress",
+      "Earn badges for milestones and accomplishments",
+      "Achievement system to gamify your journey",
+      "Safe, age-appropriate community features",
     ],
   },
 ];
 
 export default function Home() {
-  const [selectedFeature, setSelectedFeature] = useState<string | null>(null);
-  const [email, setEmail] = useState('');
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [openModal, setOpenModal] = useState<number | null>(null);
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const selectedFeatureData = features.find((f) => f.id === selectedFeature);
-
-  const handleWaitlistSubmit = async (e: React.FormEvent) => {
+  const handleWaitlist = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitStatus('submitting');
-
+    setStatus("loading");
     try {
-      const response = await fetch('/api/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setEmail('');
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      setSubmitStatus('error');
+      if (!res.ok) throw new Error("Failed to submit");
+      setStatus("success");
+      setEmail("");
+    } catch (err: any) {
+      setStatus("error");
+      setErrorMsg("Something went wrong. Try again.");
     }
   };
 
   return (
-    <main className="min-h-screen">
-      {/* Hero Section */}
-      <section
-        className="relative min-h-screen flex items-center justify-center px-4"
-        style={{
-          backgroundImage: 'url(https://cdn.abacus.ai/images/af8ad862-b83b-4bc2-bd83-d1f430f9ead0.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60" />
-        <div className="relative z-10 text-center text-white px-4 sm:px-6 max-w-4xl w-full">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 leading-tight"
-            style={{ color: '#FF69B4' }}
-          >
-            BarrelConnect.Pro
-          </motion.h1>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 leading-tight"
-            style={{ color: '#FFB6D9' }}
-          >
-            Your Passion. Your Community. One Place.
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg sm:text-xl md:text-2xl" 
-            style={{ color: "#FFC0CB" }}
-          >
-            Everything barrel racing, all in one place — connected by community.
-          </motion.p>
+    <div className="min-h-screen bg-[#0f1b2d] text-[#e8e8ec]">
+      <header className="w-full border-b border-[#2a4a7a] bg-[#0c1524]/95 backdrop-blur-sm sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+          <a href="/" className="flex items-center"><img src="/buckle.png" alt="Bullrider.Pro" className="h-14 w-auto" /></a>
+          <nav className="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-wider text-[#8a9bb5]">
+            <a href="#features" className="hover:text-[#c9a84c] transition">Features</a>
+            <a href="#pricing" className="hover:text-[#c9a84c] transition">Pricing</a>
+            <a href="#waitlist" className="hover:text-[#c9a84c] transition">Waitlist</a>
+          </nav>
+        </div>
+      </header>
+      <section className="flex flex-col items-center justify-center text-center px-6 py-20">
+        <img src="/buckle.png" alt="Champion Bullrider.Pro Buckle" className="w-80 md:w-[420px] drop-shadow-2xl" />
+        <p className="mt-8 text-2xl md:text-3xl font-bold italic text-[#c9a84c] tracking-wide">&ldquo;Pain is Temporary, Victory Lasts Forever&rdquo;</p>
+        <p className="mt-6 text-lg md:text-xl max-w-2xl text-[#8a9bb5]">The ultimate mobile platform for bull riders, stock contractors, trainers, sponsors, and fans. Track scores, connect with the community, and take your rodeo career to the next level.</p>
+        <a href="#waitlist" className="mt-10 px-8 py-4 bg-[#8b1a1a] text-white font-bold rounded-lg text-lg uppercase tracking-wider hover:bg-[#a52222] transition shadow-lg shadow-[#8b1a1a]/30">Join the Waitlist</a>
+      </section>
+      <section id="features" className="max-w-7xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-bold text-center mb-14 text-[#c9a84c] uppercase tracking-wider">What&#39;s Inside</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((f, i) => (
+            <button key={i} onClick={() => setOpenModal(i)} className="bg-[#162a4a] border border-[#2a4a7a] rounded-xl p-6 text-left hover:border-[#c9a84c] hover:shadow-lg hover:shadow-[#c9a84c]/10 transition-all group">
+              <div className="text-4xl mb-4">{f.icon}</div>
+              <h3 className="text-xl font-semibold text-[#c9a84c] group-hover:underline">{f.title}</h3>
+              <p className="mt-2 text-sm text-[#8a9bb5]">{f.desc}</p>
+              <p className="mt-3 text-xs text-[#c9a84c] font-semibold">Click to see all features &rarr;</p>
+            </button>
+          ))}
         </div>
       </section>
-
-      {/* Features Section */}
-      <section
-        id="features"
-        className="relative py-16 sm:py-20 md:py-24"
-        style={{
-          backgroundImage: 'url(https://cdn.abacus.ai/images/6ca42556-4d4c-4828-8016-e605d27837b0.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-12 sm:mb-16">
-            Everything You Need
-          </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                onClick={() => setSelectedFeature(feature.id)}
-                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-5 sm:p-6 cursor-pointer hover:bg-white/20 transition-all hover:scale-105"
-              >
-                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{feature.icon}</div>
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-sm sm:text-base text-gray-300">{feature.description}</p>
-                <p className="text-cyan-400 mt-3 sm:mt-4 text-xs sm:text-sm font-medium">Click to see all features →</p>
-              </motion.div>
-            ))}
+      {openModal !== null && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={() => setOpenModal(null)}>
+          <div className="bg-[#162a4a] border border-[#2a4a7a] rounded-2xl max-w-lg w-full mx-4 p-8 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="text-5xl mb-4">{features[openModal].icon}</div>
+            <h3 className="text-2xl font-bold text-[#c9a84c]">{features[openModal].title}</h3>
+            <ul className="mt-4 space-y-2">
+              {features[openModal].detail.map((item, j) => (
+                <li key={j} className="flex items-start gap-2 text-[#c0c8d8]">
+                  <span className="text-[#c9a84c] mt-0.5">&#10003;</span>{item}
+                </li>
+              ))}
+            </ul>
+            <button onClick={() => setOpenModal(null)} className="mt-6 px-6 py-2 bg-[#8b1a1a] text-white font-semibold rounded-lg hover:bg-[#a52222] transition">Close</button>
           </div>
         </div>
+      )}
+      <section id="pricing" className="max-w-5xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-bold text-center mb-14 text-[#c9a84c] uppercase tracking-wider">Pricing</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { name: "Free", price: "$0", period: "/forever", perks: ["Basic rider profile","Event discovery","Community chat access","Weather updates","Marketplace access","Leaderboard access"] },
+            { name: "Premium", price: "$4.99", period: "/mo", perks: ["Everything in Free","AI ride analysis","AR Bull Simulator","Video session recording","Training video library","1-on-1 coaching","Wearable integration","Sponsor matching","Priority support"], featured: true },
+            { name: "Annual", price: "$49.99", period: "/yr", perks: ["Everything in Premium","Save $10 vs monthly","Early access to new features","Exclusive community badge"], best: true },
+          ].map((plan, i) => (
+            <div key={i} className={`rounded-xl p-8 border ${plan.featured ? "border-[#c9a84c] bg-[#1d3461] shadow-lg shadow-[#c9a84c]/15" : "border-[#2a4a7a] bg-[#162a4a]"}`}>
+              {plan.featured && <p className="text-xs font-bold uppercase tracking-wider text-[#8b1a1a] mb-2">Most Popular</p>}
+              {plan.best && <p className="text-xs font-bold uppercase tracking-wider text-[#c9a84c] mb-2">Best Value</p>}
+              <h3 className="text-xl font-bold text-[#c9a84c]">{plan.name}</h3>
+              <div className="mt-4"><span className="text-4xl font-extrabold text-[#e8e8ec]">{plan.price}</span><span className="text-[#8a9bb5]">{plan.period}</span></div>
+              <ul className="mt-6 space-y-3">{plan.perks.map((p, j) => (<li key={j} className="flex items-start gap-2 text-sm text-[#c0c8d8]"><span className="text-[#c9a84c] mt-0.5">&#10003;</span>{p}</li>))}</ul>
+            </div>
+          ))}
+        </div>
       </section>
-
-      {/* Feature Modal */}
-      <AnimatePresence>
-        {selectedFeature && selectedFeatureData && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 sm:p-6"
-            onClick={() => setSelectedFeature(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-slate-900 rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 sm:p-8"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="flex items-start sm:items-center justify-between mb-6 gap-4">
-                <div className="flex items-start sm:items-center gap-3 sm:gap-4 flex-1">
-                  <span className="text-4xl sm:text-5xl">{selectedFeatureData.icon}</span>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-xl sm:text-2xl font-bold text-white break-words">{selectedFeatureData.title}</h3>
-                    <p className="text-sm sm:text-base text-cyan-400 break-words">{selectedFeatureData.description}</p>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setSelectedFeature(null)}
-                  className="text-gray-400 hover:text-white text-2xl flex-shrink-0"
-                >
-                  ✕
-                </button>
-              </div>
-              <ul className="space-y-3">
-                {selectedFeatureData.details.map((detail, index) => (
-                  <li key={index} className="flex items-start gap-3 text-sm sm:text-base text-gray-300">
-                    <span className="text-cyan-400 mt-1 flex-shrink-0">✓</span>
-                    <span>{detail}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </motion.div>
+      <section id="waitlist" className="max-w-xl mx-auto px-6 py-20 text-center">
+        <h2 className="text-3xl font-bold mb-4 text-[#c9a84c] uppercase tracking-wider">Get Early Access</h2>
+        <p className="text-[#8a9bb5] mb-8">Drop your email and be the first to know when Bullrider.Pro launches.</p>
+        {status === "success" ? (
+          <p className="text-[#c9a84c] text-lg font-semibold">&#127881; You&apos;re on the list! Check your inbox.</p>
+        ) : (
+          <form onSubmit={handleWaitlist} className="flex flex-col sm:flex-row gap-4">
+            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" className="flex-1 px-4 py-3 rounded-lg bg-[#162a4a] border border-[#2a4a7a] text-[#e8e8ec] placeholder-[#5a6a80] focus:outline-none focus:border-[#c9a84c]" />
+            <button type="submit" disabled={status === "loading"} className="px-6 py-3 bg-[#8b1a1a] text-white font-bold rounded-lg uppercase tracking-wider hover:bg-[#a52222] transition shadow-lg shadow-[#8b1a1a]/30 disabled:opacity-50">{status === "loading" ? "Submitting..." : "Notify Me"}</button>
+          </form>
         )}
-      </AnimatePresence>
-
-      {/* Pricing Section */}
-      <section
-        className="relative py-16 sm:py-20 md:py-24"
-        style={{
-          backgroundImage: 'url(https://cdn.abacus.ai/images/be413e14-4646-47ef-8084-71b5fd97b164.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-12 sm:mb-16">
-            Free vs Premium
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-            {/* Free Tier */}
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 sm:p-8">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Free</h3>
-              <p className="text-3xl sm:text-4xl font-bold text-white mb-6">$0<span className="text-base sm:text-lg font-normal text-gray-400">/forever</span></p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start gap-3 text-sm sm:text-base text-gray-300"><span className="text-green-400 flex-shrink-0">✓</span> <span>Community feed & social features</span></li>
-                <li className="flex items-start gap-3 text-sm sm:text-base text-gray-300"><span className="text-green-400 flex-shrink-0">✓</span> <span>Direct messaging</span></li>
-                <li className="flex items-start gap-3 text-sm sm:text-base text-gray-300"><span className="text-green-400 flex-shrink-0">✓</span> <span>Event browsing & registration</span></li>
-                <li className="flex items-start gap-3 text-sm sm:text-base text-gray-300"><span className="text-green-400 flex-shrink-0">✓</span> <span>Basic horse profiles (2 horses)</span></li>
-                <li className="flex items-start gap-3 text-sm sm:text-base text-gray-300"><span className="text-green-400 flex-shrink-0">✓</span> <span>Marketplace access</span></li>
-                <li className="flex items-start gap-3 text-sm sm:text-base text-gray-300"><span className="text-green-400 flex-shrink-0">✓</span> <span>Emergency alerts</span></li>
-              </ul>
-            </div>
-            {/* Premium Tier */}
-            <div className="bg-cyan-500/20 backdrop-blur-sm border-2 border-cyan-400 rounded-2xl p-6 sm:p-8 relative">
-              <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 bg-cyan-500 text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap">
-                MOST POPULAR
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Premium</h3>
-              <p className="text-3xl sm:text-4xl font-bold text-white mb-6">$4.99<span className="text-base sm:text-lg font-normal text-gray-400">/month</span></p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start gap-3 text-sm sm:text-base text-gray-300"><span className="text-cyan-400 flex-shrink-0">✓</span> <span>Everything in Free</span></li>
-                <li className="flex items-start gap-3 text-sm sm:text-base text-gray-300"><span className="text-cyan-400 flex-shrink-0">✓</span> <span>Unlimited horse profiles</span></li>
-                <li className="flex items-start gap-3 text-sm sm:text-base text-gray-300"><span className="text-cyan-400 flex-shrink-0">✓</span> <span>AI run analysis & insights</span></li>
-                <li className="flex items-start gap-3 text-sm sm:text-base text-gray-300"><span className="text-cyan-400 flex-shrink-0">✓</span> <span>Video analysis tools</span></li>
-                <li className="flex items-start gap-3 text-sm sm:text-base text-gray-300"><span className="text-cyan-400 flex-shrink-0">✓</span> <span>Live streaming</span></li>
-                <li className="flex items-start gap-3 text-sm sm:text-base text-gray-300"><span className="text-cyan-400 flex-shrink-0">✓</span> <span>Advanced health tracking</span></li>
-                <li className="flex items-start gap-3 text-sm sm:text-base text-gray-300"><span className="text-cyan-400 flex-shrink-0">✓</span> <span>Pedigree & breeding database</span></li>
-                <li className="flex items-start gap-3 text-sm sm:text-base text-gray-300"><span className="text-cyan-400 flex-shrink-0">✓</span> <span>Predictive analytics</span></li>
-                <li className="flex items-start gap-3 text-sm sm:text-base text-gray-300"><span className="text-cyan-400 flex-shrink-0">✓</span> <span>Priority support</span></li>
-              </ul>
-            </div>
+        {status === "error" && <p className="mt-4 text-red-400 text-sm">{errorMsg}</p>}
+      </section>
+      <footer className="border-t border-[#2a4a7a] bg-[#0c1524]">
+        <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-[#5a6a80]">
+          <span>&copy; 2026 Bullrider.Pro &mdash; All rights reserved.</span>
+          <div className="flex gap-6">
+            <a href="/terms" className="hover:text-[#c9a84c] transition">Terms of Service</a>
+            <a href="/privacy" className="hover:text-[#c9a84c] transition">Privacy Policy</a>
+            <a href="/refund" className="hover:text-[#c9a84c] transition">Refund Policy</a>
           </div>
         </div>
-      </section>
-
-      {/* Waitlist Section */}
-      <section
-        className="relative py-16 sm:py-20 md:py-24"
-        style={{
-          backgroundImage: 'url(https://cdn.abacus.ai/images/69a6dabf-d049-4951-968e-09e86135efce.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
-            Be First In The Arena
-          </h2>
-          <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8">
-            Join the waitlist and be the first to know when BarrelConnect launches.
-          </p>
-
-          {submitStatus === 'success' ? (
-            <div className="bg-green-500/20 border border-green-500 rounded-lg p-6 text-white">
-              <p className="text-lg sm:text-xl font-semibold">✓ You're on the list!</p>
-              <p className="text-sm sm:text-base text-gray-300 mt-2">We'll notify you when BarrelConnect launches.</p>
-            </div>
-          ) : (
-            <form onSubmit={handleWaitlistSubmit} className="max-w-md mx-auto">
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  className="flex-1 px-5 sm:px-6 py-3 sm:py-4 rounded-full text-slate-900 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                />
-                <button
-                  type="submit"
-                  disabled={submitStatus === 'submitting'}
-                  className="bg-cyan-500 hover:bg-cyan-600 disabled:bg-gray-500 text-white font-semibold px-8 sm:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg transition-colors whitespace-nowrap"
-                >
-                  {submitStatus === 'submitting' ? 'Joining...' : 'Join Waitlist'}
-                </button>
-              </div>
-              {submitStatus === 'error' && (
-                <p className="text-red-400 mt-4 text-sm sm:text-base">Something went wrong. Please try again.</p>
-              )}
-            </form>
-          )}
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+      </footer>
+    </div>
   );
 }
