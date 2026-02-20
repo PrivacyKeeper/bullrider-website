@@ -159,6 +159,7 @@ export default function Home() {
             <a href="#features" className="hover:text-[#c9a84c] transition">Features</a>
             <a href="#pricing" className="hover:text-[#c9a84c] transition">Pricing</a>
             <a href="#waitlist" className="hover:text-[#c9a84c] transition">Waitlist</a>
+            <a href="/blog" className="hover:text-[#c9a84c] transition">Blog</a>
           </nav>
         </div>
       </header>
@@ -272,6 +273,8 @@ export default function Home() {
             <a href="/terms" className="hover:text-[#c9a84c] transition">Terms of Service</a>
             <a href="/privacy" className="hover:text-[#c9a84c] transition">Privacy Policy</a>
             <a href="/refund" className="hover:text-[#c9a84c] transition">Refund Policy</a>
+            <a href="/blog" className="hover:text-[#c9a84c] transition">Blog</a>
+            <a href="mailto:support@bullrider.pro" className="hover:text-[#c9a84c] transition">support@bullrider.pro</a>
           </div>
         </div>
       </footer>
