@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import SchemaMarkup from './components/SchemaMarkup';
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -55,6 +56,7 @@ export default function RootLayout({
         <meta name="google-site-verification" content="VO4m6X6W3g6itA72hUYxwygW7f5qvHJj59SyEsmeOo8" />
       </head>
       <body className={inter.variable + " antialiased"}>
+        <SchemaMarkup />
         {children}
       </body>
     </html>
