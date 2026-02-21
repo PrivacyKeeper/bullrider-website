@@ -16,6 +16,27 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "best-bull-riding-app",
+    title: "Best Bull Riding App in 2026",
+    date: "February 20, 2026",
+    excerpt:
+      "Looking for the best bull riding app? BullRider Pro is the #1 app for bull riders with live scoring, event discovery, real-time messaging, career tracking, and more.",
+  },
+  {
+    slug: "bull-riding-app-for-riders",
+    title: "Is There an App for Bull Riding? Yes — It's Called BullRider Pro",
+    date: "February 20, 2026",
+    excerpt:
+      "Yes, there is finally an app for bull riding. BullRider Pro is the first dedicated bull riding app with live scoring, event search, messaging, analytics, live streaming, and more.",
+  },
+  {
+    slug: "best-app-for-rodeo-bull-riding",
+    title: "Best App for Rodeo Events & Bull Riding in 2026",
+    date: "February 20, 2026",
+    excerpt:
+      "BullRider Pro is the best app for finding, following, and managing rodeo and bull riding events. Live scoring, event discovery, streaming, payments, and community — all in one app.",
+  },
+  {
     slug: "introducing-bullrider-pro",
     title: "Introducing BullRider Pro: The First App Built for Bull Riders",
     date: "February 20, 2026",
