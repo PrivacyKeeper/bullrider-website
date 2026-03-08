@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import CrossQuote from "./components/CrossQuote";
 
 const features = [
   {
@@ -265,6 +266,7 @@ export default function Home() {
         {status === "error" && <p className="mt-4 text-red-400 text-sm">{errorMsg}</p>}
       </section>
 
+      <CrossQuote />
       {/* Footer */}
       <footer className="border-t border-[#2a4a7a] bg-[#0c1524]">
         <div className="max-w-7xl mx-auto px-6 py-12">
