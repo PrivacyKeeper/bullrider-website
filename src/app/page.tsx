@@ -267,14 +267,34 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-[#2a4a7a] bg-[#0c1524]">
-        <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-[#5a6a80]">
-          <span>&copy; 2026 Bullrider.Pro &mdash; All rights reserved.</span>
-          <div className="flex gap-6">
-            <a href="/terms" className="hover:text-[#c9a84c] transition">Terms of Service</a>
-            <a href="/privacy" className="hover:text-[#c9a84c] transition">Privacy Policy</a>
-            <a href="/refund" className="hover:text-[#c9a84c] transition">Refund Policy</a>
-            <a href="/blog" className="hover:text-[#c9a84c] transition">Blog</a>
-            <a href="mailto:support@bullrider.pro" className="hover:text-[#c9a84c] transition">support@bullrider.pro</a>
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="flex flex-col items-center text-center md:text-left md:flex-row md:items-start md:justify-between gap-10">
+            <div>
+              <h4 className="text-[#c9a84c] font-bold text-sm uppercase tracking-wider mb-3">Bullrider.Pro</h4>
+              <p className="text-[#8a9bb5] text-sm max-w-xs">Pain is Temporary, Victory Lasts Forever.</p>
+            </div>
+            <div>
+              <h4 className="text-[#c9a84c] font-bold text-sm uppercase tracking-wider mb-3">Explore</h4>
+              <div className="flex flex-col gap-2 text-sm">
+                <a href="/events" className="text-[#8a9bb5] hover:text-[#c9a84c] transition">Events</a>
+                <a href="/blog" className="text-[#8a9bb5] hover:text-[#c9a84c] transition">Blog</a>
+              </div>
+            </div>
+            <div>
+              <h4 className="text-[#c9a84c] font-bold text-sm uppercase tracking-wider mb-3">Legal</h4>
+              <div className="flex flex-col gap-2 text-sm">
+                <a href="/privacy" className="text-[#8a9bb5] hover:text-[#c9a84c] transition">Privacy Policy</a>
+                <a href="/terms" className="text-[#8a9bb5] hover:text-[#c9a84c] transition">Terms of Service</a>
+                <a href="/refund" className="text-[#8a9bb5] hover:text-[#c9a84c] transition">Refund Policy</a>
+              </div>
+            </div>
+            <div>
+              <h4 className="text-[#c9a84c] font-bold text-sm uppercase tracking-wider mb-3">Contact</h4>
+              <a href="mailto:support@bullrider.pro" className="text-[#8a9bb5] hover:text-[#c9a84c] transition text-sm">support@bullrider.pro</a>
+            </div>
+          </div>
+          <div className="mt-10 pt-6 border-t border-[#2a4a7a] text-center text-sm text-[#5a6a80]">
+            <span>&copy; 2026 Apps 1, LLC. All rights reserved.</span>
           </div>
         </div>
       </footer>
