@@ -266,7 +266,6 @@ export default function Home() {
         {status === "error" && <p className="mt-4 text-red-400 text-sm">{errorMsg}</p>}
       </section>
 
-      <CrossQuote />
       {/* Footer */}
       <footer className="border-t border-[#2a4a7a] bg-[#0c1524]">
         <div className="max-w-7xl mx-auto px-6 py-12">
@@ -295,8 +294,9 @@ export default function Home() {
               <a href="mailto:support@bullrider.pro" className="text-[#8a9bb5] hover:text-[#c9a84c] transition text-sm">support@bullrider.pro</a>
             </div>
           </div>
-          <div className="mt-10 pt-6 border-t border-[#2a4a7a] text-center text-sm text-[#5a6a80]">
+          <div className="mt-10 pt-6 border-t border-[#2a4a7a] flex items-end justify-between text-sm text-[#5a6a80]">
             <span>&copy; 2026 Apps 1, LLC. All rights reserved.</span>
+            <CrossQuote />
           </div>
         </div>
       </footer>

@@ -11,7 +11,7 @@ export default function CrossQuote() {
     setQuote(quotes[index]);
   }, []);
   return (
-    <div className="fixed bottom-4 right-4 z-40 flex flex-col items-center gap-2 max-w-[200px]">
+    <div className="flex flex-col items-center gap-2 max-w-[200px]">
       <Image src="/cross.jpg" alt="Cross" width={80} height={80} className="rounded-lg opacity-90" />
       <p className="text-xs italic text-[#8a9bb5] text-center leading-snug">{quote}</p>
     </div>
