@@ -25,12 +25,14 @@ export const metadata: Metadata = {
     url: 'https://www.bullrider.pro',
     siteName: 'BullRider.pro',
     type: 'website',
+    images: [{ url: 'https://www.bullrider.pro/buckle.png', width: 1200, height: 630, alt: 'BullRider.Pro Champion Buckle' }],
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'BullRider.pro - #1 Bull Riding App',
     description: 'The ultimate bull riding app. Track scores, find events, connect with bull riders, stock contractors, and fans.',
+    images: ['https://www.bullrider.pro/buckle.png'],
   },
   robots: {
     index: true,
