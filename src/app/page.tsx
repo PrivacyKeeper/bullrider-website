@@ -294,12 +294,13 @@ export default function Home() {
               <a href="mailto:support@bullrider.pro" className="text-[#8a9bb5] hover:text-[#c9a84c] transition text-sm">support@bullrider.pro</a>
             </div>
           </div>
-          <div className="mt-10 pt-6 border-t border-[#2a4a7a] flex items-end justify-between text-sm text-[#5a6a80]">
+          <div className="mt-10 pt-6 border-t border-[#2a4a7a] text-sm text-[#5a6a80]">
             <span>&copy; 2026 Apps 1, LLC. All rights reserved.</span>
-            <CrossQuote />
           </div>
         </div>
       </footer>
+
+      <CrossQuote />
     </div>
   );
 }
