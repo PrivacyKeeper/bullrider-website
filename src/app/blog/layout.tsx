@@ -15,17 +15,11 @@ export default function BlogLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        backgroundColor: "#0f1b2d",
-        color: "#ffffff",
-      }}
-    >
+    <div className="rodeo-page rodeo-bg-3 min-h-screen text-white">
       <header
+        className="border-b border-[#1e3a5f] bg-[#0c1524]/80 backdrop-blur-sm"
         style={{
           padding: "1.5rem 2rem",
-          borderBottom: "1px solid #1e3a5f",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -54,15 +48,17 @@ export default function BlogLayout({
         </a>
       </header>
       <main
+        className="rodeo-panel"
         style={{
           maxWidth: "800px",
-          margin: "0 auto",
+          margin: "2rem auto",
           padding: "2rem 1.5rem",
         }}
       >
         {children}
       </main>
       <footer
+        className="bg-[#0c1524]/85"
         style={{
           padding: "2rem",
           borderTop: "1px solid #1e3a5f",

@@ -1,11 +1,13 @@
 export default function Refund() {
   return (
-    <main className="min-h-screen max-w-4xl mx-auto px-6 py-20">
-      <a href="/" className="text-sm mb-8 inline-block hover:underline" style={{ color: 'var(--gold)' }}>← Back to Home</a>
-      <h1 className="text-4xl font-bold mb-2">Refund Policy</h1>
-      <p className="mb-10 text-sm" style={{ color: '#555' }}>Last updated: February 2026</p>
+    <div className="rodeo-page rodeo-bg-4">
+      <main className="min-h-screen max-w-4xl mx-auto px-6 py-16">
+        <div className="rodeo-panel p-8 md:p-10">
+          <a href="/" className="text-sm mb-8 inline-block hover:underline" style={{ color: 'var(--gold)' }}>← Back to Home</a>
+          <h1 className="text-4xl font-bold mb-2">Refund Policy</h1>
+          <p className="mb-10 text-sm" style={{ color: '#9aa8bf' }}>Last updated: February 2026</p>
 
-      <div className="space-y-8" style={{ color: '#ccc' }}>
+          <div className="space-y-8" style={{ color: '#d3dae6' }}>
         <section>
           <h2 className="text-xl font-bold mb-2 text-white">Premium Subscriptions</h2>
           <p>Bullrider.pro Premium subscriptions are billed monthly ($4.99/month) or annually ($49.99/year). You may cancel your subscription at any time through your app store account settings.</p>
@@ -44,7 +46,9 @@ export default function Refund() {
           <h2 className="text-xl font-bold mb-2 text-white">Contact Us</h2>
           <p>For refund-related questions, contact us at: support@bullrider.pro</p>
         </section>
-      </div>
-    </main>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }

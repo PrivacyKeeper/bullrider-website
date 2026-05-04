@@ -152,7 +152,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0f1b2d] text-[#e8e8ec]">
+    <div className="rodeo-page rodeo-bg-1 min-h-screen text-[#e8e8ec]">
       <header className="w-full border-b border-[#2a4a7a] bg-[#0c1524]/95 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
           <a href="/" className="flex items-center"><img src="/buckle.png" alt="Bullrider.Pro" className="h-[72px] w-auto" /></a>

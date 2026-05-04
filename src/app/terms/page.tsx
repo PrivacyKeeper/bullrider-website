@@ -1,11 +1,13 @@
 export default function Terms() {
   return (
-    <main className="min-h-screen max-w-4xl mx-auto px-6 py-20">
-      <a href="/" className="text-sm mb-8 inline-block hover:underline" style={{ color: 'var(--gold)' }}>← Back to Home</a>
-      <h1 className="text-4xl font-bold mb-2">Terms of Service</h1>
-      <p className="mb-10 text-sm" style={{ color: '#555' }}>Last updated: February 2026</p>
+    <div className="rodeo-page rodeo-bg-4">
+      <main className="min-h-screen max-w-4xl mx-auto px-6 py-16">
+        <div className="rodeo-panel p-8 md:p-10">
+          <a href="/" className="text-sm mb-8 inline-block hover:underline" style={{ color: 'var(--gold)' }}>← Back to Home</a>
+          <h1 className="text-4xl font-bold mb-2">Terms of Service</h1>
+          <p className="mb-10 text-sm" style={{ color: '#9aa8bf' }}>Last updated: February 2026</p>
 
-      <div className="space-y-8" style={{ color: '#ccc' }}>
+          <div className="space-y-8" style={{ color: '#d3dae6' }}>
         <section>
           <h2 className="text-xl font-bold mb-2 text-white">1. Acceptance of Terms</h2>
           <p>By using Bullrider.pro, you agree to these terms. If you don&apos;t agree, don&apos;t use the app.</p>
@@ -160,7 +162,9 @@ export default function Terms() {
           <h2 className="text-xl font-bold mb-2 text-white">28. Contact</h2>
           <p>For questions about these terms: support@bullrider.pro</p>
         </section>
-      </div>
-    </main>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }

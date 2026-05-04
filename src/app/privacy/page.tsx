@@ -1,11 +1,13 @@
 export default function Privacy() {
   return (
-    <main className="min-h-screen max-w-4xl mx-auto px-6 py-20">
-      <a href="/" className="text-sm mb-8 inline-block hover:underline" style={{ color: 'var(--gold)' }}>← Back to Home</a>
-      <h1 className="text-4xl font-bold mb-2">Privacy Policy</h1>
-      <p className="mb-10 text-sm" style={{ color: '#555' }}>Last updated: February 2026</p>
+    <div className="rodeo-page rodeo-bg-4">
+      <main className="min-h-screen max-w-4xl mx-auto px-6 py-16">
+        <div className="rodeo-panel p-8 md:p-10">
+          <a href="/" className="text-sm mb-8 inline-block hover:underline" style={{ color: 'var(--gold)' }}>← Back to Home</a>
+          <h1 className="text-4xl font-bold mb-2">Privacy Policy</h1>
+          <p className="mb-10 text-sm" style={{ color: '#9aa8bf' }}>Last updated: February 2026</p>
 
-      <div className="space-y-8" style={{ color: '#ccc' }}>
+          <div className="space-y-8" style={{ color: '#d3dae6' }}>
         <section>
           <h2 className="text-xl font-bold mb-2 text-white">1. Information We Collect</h2>
           <p>We collect information you provide directly, including name, email, profile information, and payment details when you subscribe to premium features. We also collect usage data such as ride scores, ride times, event participation, location data (GPS), and app interactions.</p>
@@ -93,7 +95,9 @@ export default function Privacy() {
           <h2 className="text-xl font-bold mb-2 text-white">15. Contact Us</h2>
           <p>For privacy-related questions, contact us at: support@bullrider.pro</p>
         </section>
-      </div>
-    </main>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }

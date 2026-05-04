@@ -24,3 +24,57 @@ body {
   color: var(--foreground);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
 }
+
+.rodeo-page {
+  --rodeo-bg-image: url('/backgrounds/rodeo-bg-1.jpg');
+  position: relative;
+  isolation: isolate;
+  background-color: #0f1b2d;
+}
+
+.rodeo-page::before {
+  content: "";
+  position: fixed;
+  inset: -4%;
+  z-index: -2;
+  pointer-events: none;
+  background-image: var(--rodeo-bg-image);
+  background-size: cover;
+  background-position: center;
+  filter: blur(3px) saturate(0.85) contrast(1.05);
+  opacity: 0.38;
+  transform: scale(1.06);
+}
+
+.rodeo-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% -10%, rgba(18, 34, 58, 0.35), rgba(9, 16, 27, 0.92) 70%),
+    linear-gradient(135deg, rgba(8, 14, 25, 0.88), rgba(12, 22, 39, 0.82));
+}
+
+.rodeo-bg-1 {
+  --rodeo-bg-image: url('/backgrounds/rodeo-bg-1.jpg');
+}
+
+.rodeo-bg-2 {
+  --rodeo-bg-image: url('/backgrounds/rodeo-bg-2.jpg');
+}
+
+.rodeo-bg-3 {
+  --rodeo-bg-image: url('/backgrounds/rodeo-bg-3.jpg');
+}
+
+.rodeo-bg-4 {
+  --rodeo-bg-image: url('/backgrounds/rodeo-bg-4.jpg');
+}
+
+.rodeo-panel {
+  background: rgba(8, 16, 30, 0.68);
+  border: 1px solid rgba(42, 74, 122, 0.5);
+  border-radius: 18px;
+  backdrop-filter: blur(2px);
+}

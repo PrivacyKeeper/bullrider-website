@@ -38,7 +38,7 @@ const events = [
 
 export default function EventsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0c1524] via-[#162033] to-[#0c1524] text-white">
+    <div className="rodeo-page rodeo-bg-2 min-h-screen text-white">
       <header className="py-6 px-6 flex items-center justify-between max-w-7xl mx-auto">
         <Link href="/" className="text-[#c9a84c] font-bold text-xl">Bullrider.Pro</Link>
         <Link href="/" className="text-sm text-[#8a9bb5] hover:text-[#c9a84c] transition">&larr; Back to Home</Link>
